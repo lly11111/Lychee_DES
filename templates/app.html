@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="never">
+    <title>DES加解密系统</title>
+    <link rel="stylesheet" href="/static/base.css" />
+    <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+    <!--导航栏-->
+    <div class="navbar">
+        <div>
+            <a href="javascript:void(0);" class="logo" onclick="showContent('home')">
+                <img src="/static/lizhi.png" alt="my logo" style="height:50px;"/>
+            </a>
+        </div>
+        <div>
+            <ul>
+                <li>
+                    <a href="javascript:void(0);" onclick="showContent('eightBit')">二进制加密</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" onclick="showContent('string')">字符串加密</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" onclick="showContent('burteForce')">暴力破解</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" onclick="showContent('avalanche')">雪崩效应</a>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+        
+    <div class="content">
+        <!--介绍页（加密原理介绍）-->
+        <div id="home" class="content-item active">
+            <h1>加解密原理介绍</h1>  
+            <img src="/static/yuanli.png" alt="">
+        </div>
+        <!--二进制加密-->
+        <div id="eightBit" class="content-item">
+            <input id="cleartext" type="text" placeholder="明文(8bits)" required/>
+            <input id="ciphertext" type="text" placeholder="密文(8bits)" required/>
+            <input id="key" type="text" placeholder="密钥(10bits)" required/>
+            <button id="viewStandard">查看标准</button>
+            <button id="encrypt">加密</button>
+            <button id="decrypt">解密</button>
+            <button class="clearButton">清除内容</button>
+            <textarea id="result" rows="10" cols="30" placeholder="加解密结果"></textarea>
+        </div>
+        <!-- 模态窗口 -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>标准查看</h2>
+                <img src="/static/role.jpg" alt="标准图片" style="width:100%; height:auto;">
+                <p><a href="/static/DES加密算法标准.docx" download class="download-link">附件：DES加密算法标准.docx</a></p>
+                <button id="confirmBtn">确定</button>
+            </div>
+        </div>
+        <script>
+            // 获取模态窗口元素
+            var modal = document.getElementById("myModal");
+            // 获取“查看标准”按钮
+            var btn = document.getElementById("viewStandard");
+            var span = document.getElementsByClassName("close")[0];
+            // 点击“查看标准”按钮时，打开模态窗口
+            btn.onclick = function () {
+                modal.style.display = "block";
+            }
+            // 点击 <span> (x) 元素，关闭模态窗口
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+            // 点击确定按钮，关闭模态窗口
+            document.getElementById("confirmBtn").onclick = function () {
+                modal.style.display = "none";
+            }
+            // 点击窗口外部时，关闭模态窗口
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+        <!--ASCII码加密-->
+        <div id="string" class="content-item">
+            <input id="cleartext" type="text" placeholder="明文(字符串 1 byte)" required/>
+            <input id="ciphertext" type="text" placeholder="密文(二进制 16 bits)" required/>
+            <input id="key" type="text" placeholder="密钥(10bits)" required/>
+            <button id="encrypt">加密</button>
+            <button id="decrypt">解密</button>
+            <button class="clearButton">清除内容</button>
+            <textarea id="result" rows="10" cols="30" placeholder="加解密结果"></textarea>
+        </div>
+        <!--暴力破解-->
+        <div id="burteForce" class="content-item">
+            <input id="cleartext" type="text" placeholder="明文(如果有多组，请用英文逗号隔开)" required/>
+            <input id="ciphertext" type="text" placeholder="密文(如果有多组，请用英文逗号隔开)" required/>
+            <button id="burteForceButton">开始破解</button>
+            <button class="clearButton">清除内容</button>
+            <div class="result-container">
+                <textarea id="singleThreadResult" rows="10" cols="30" placeholder="单线程破解结果"></textarea>
+                <textarea id="multiThreadResult" rows="10" cols="30" placeholder="多线程破解结果"></textarea>
+            </div>
+            <div class="time-container">
+                <textarea id="singleThreadTime" rows="2" cols="30" placeholder="单线程计算时间"></textarea>
+                <textarea id="multiThreadTime" rows="2" cols="30" placeholder="多线程计算时间"></textarea>
+            </div>
+        </div>
+        <!--雪崩效应-->
+        <div id="avalanche" class="content-item">
+            <div class="container" >
+                <div class="left">
+                    <div class="title">
+                        <strong>明文雪崩效应：</strong>
+                    </div>
+                    <input class="left-input1" type="text" placeholder="明文1(8bits)" required/>
+                    <input class="left-input2" type="text" placeholder="明文2(8bits)" required/>
+                    <input class="left-input3" type="text" placeholder="密钥(10bits)" required/>
+                    <button class="left-button" >加密</button>
+                    <textarea class="left-textarea" rows="10" cols="30" placeholder="加密结果"></textarea>
+
+                    <div class="bottom-text">
+                        <div class="row">
+                            <span>明文有</span>
+                            <input class="bottom-input" type="text"/>
+                            <span>bits 不同</span>
+                        </div>
+                        <div class="row">
+                            <span>密文有</span>
+                            <input class="bottom-input1" type="text"/>
+                            <span>bits 不同</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="title">
+                        <strong>密钥雪崩效应：</strong>
+                    </div>
+                    <input class="right-input1" type="text" placeholder="明文(8bits)" required/>
+                    <input class="right-input2" type="text" placeholder="密钥1(10bits)" required/>
+                    <input class="right-input3" type="text" placeholder="密钥2(10bits)" required/>
+                    <button class="right-button">加密</button>
+                    <textarea class="right-textarea" rows="10" cols="30" placeholder="加密结果"></textarea>
+
+                    <div class="bottom-text">
+                        <div class="row">
+                            <span>密钥有</span>
+                            <input class="bottom-input2" type="text"/>
+                            <span>bits 不同</span>
+                        </div>
+                        <div class="row">
+                            <span>密文有</span>
+                            <input class="bottom-input3" type="text"/>
+                            <span>bits 不同</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

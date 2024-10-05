@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+    background-color: #f0f0f0;
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+
+    text-align: center;
+    transform: translateY(-5%);
+}
+
+#introImage {
+    max-width: 40%;
+    height: auto;
+    opacity: 0;
+    animation: fadeIn 1s forwards 0s;
+}
+
+#introText {
+    opacity: 0;
+    animation: fadeIn 1s forwards 1s;
+    margin-top: 20px;
+}
+
+#newImage {
+    max-width: 40%;
+    height: auto;
+    margin-left: 500px;
+    opacity: 0;
+    animation: fadeIn 1s forwards 2s;
+}
+
+.footer {
+    text-align: center;
+    /*margin-bottom: 10px; !* 页面底部留出间距 *!*/
+    background-color: #ffffff;
+}
+
+#emailText {
+    opacity: 0;
+    animation: fadeIn 1s forwards 2s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}

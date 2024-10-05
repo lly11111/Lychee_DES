@@ -1,0 +1,317 @@
+* {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* 设置整体页面背景图片 */
+body {
+    background: url('/static/beijing.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+/* 导航栏的样式 */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 0 20px;
+}
+.navbar li {
+    float: left;
+}
+.navbar a {
+    font-size: 21px;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+.navbar a.logo {
+    font-size: 24px;
+}
+.navbar ul li a:hover {
+    display: inline-block;
+    color: rgb(158, 158, 158);
+}
+/* 内容区域的样式 */
+.content {
+    padding: 16px;
+    width: 80%;
+    margin: 0 auto;
+}
+.content-item {
+    display: none;
+    text-align:right;
+}
+.content-item.active {
+    display: block;
+}
+/* 通用的输入框和按钮样式 */
+.content-item {
+    margin-top: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* 输入框样式 */
+.content-item input[type="text"],
+.content-item textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box; /* 使得内边距不会增加输入框的总宽度 */
+}
+
+/* 文本区域样式 */
+.content-item textarea {
+    resize: none;/* 允许垂直调整大小 */
+}
+
+/* 按钮样式 */
+.content-item button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #000000;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.content-item button:hover {
+    color: #888888;
+}
+
+/* 优化按钮和输入框的视觉效果 */
+.content-item input[type="text"]:focus,
+.content-item textarea:focus {
+    outline: none;
+    border-color: #464646;
+    box-shadow: 0 0 0 2px rgba(84, 84, 84, 0.5);
+}
+
+/* 使内容区域标题更突出 */
+.content-item h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+/* 使内容区域的文本对齐 */
+.content-item p,
+.content-item input,
+.content-item button,
+.content-item textarea {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#home{
+    text-align: center;
+}
+#home h1{
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+#home img{
+    max-width: 100%;
+    height: 800px;
+    border-radius: 4px;  
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .content-item {
+        margin: 10px;
+    }
+    .content-item input[type="text"],
+    .content-item textarea {
+        width: 100%;
+    }
+}
+/*暴力破解页面，密钥结果文本框的样式*/
+.result-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.result-container textarea {
+    width: 45%;
+    height: 230px;
+}
+/*暴力破解页面，破解时间文本框的样式*/
+.time-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.time-container textarea {
+    width: 45%;
+    height: 55px;
+}
+
+/* 模态窗口样式 */
+.modal {
+    display: none; /* 默认隐藏 */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% 高度的上边距 */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* 窗口宽度 */
+    max-width: 500px; /* 最大宽度 */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*超链接格式*/
+.download-link {
+    color: #007BFF;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.download-link:hover {
+    text-decoration: none;
+    color: #0056b3;
+}
+/* 确定按钮样式 */
+#confirmBtn {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    font-size: 1.2em;
+}
+
+#confirmBtn:hover {
+    background-color: #0056b3;
+}
+/* 基本样式 */
+.container {
+    display: flex;
+    justify-content: space-between; /* 左右两部分等分 */
+}
+
+.left, .right {
+    width: 48%; /* 左右两部分各占48% */
+    border: 1px solid #007BFF;
+    padding: 10px;
+    box-sizing: border-box;
+    max-height: 1000px;
+}
+
+/* 标题样式 */
+.title {
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+/* 输入框样式 */
+.left-input1, .left-input2,.left-input3{
+    width: 100%; /* 输入框宽度为100% */
+    margin: 5px 0;
+    padding: 5px;
+}
+.right-input1, .right-input2,.right-input3{
+    width: 100%; /* 输入框宽度为100% */
+    margin: 5px 0;
+    padding: 5px;
+}
+
+
+/* 按钮样式 */
+.left-button,.right-button {
+    width: 100%; /* 按钮宽度为100% */
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.left-button:hover {
+    background-color: #0056b3;
+}
+.right-button:hover {
+    background-color: #0056b3;
+}
+
+/* 文本区域样式 */
+.left-textarea,.right-textarea {
+    width: 100%;
+    margin: 5px 0;
+    padding: 5px;
+    resize: none; /* 禁止调整大小 */
+}
+
+/* 底部文本框样式 */
+.bottom-text {
+    margin-top: 5px;
+    padding: 0;
+    font-size: 27px;
+}
+
+.row {
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    margin-bottom: 5px;
+}
+
+.row:last-child {
+    margin-bottom: 0;
+}
+.row span {
+    flex:1;
+    text-align: center;
+    margin: 0;
+}
+
+/* 底部输入框样式 */
+.bottom-input,.bottom-input1,.bottom-input2,.bottom-input3 {
+    margin: 5px 0;
+    width: 100px !important;
+    height: 30px;
+    padding: 0;
+    font-size: 26px;
+    line-height: 30px;
+    text-align: center;
+}
